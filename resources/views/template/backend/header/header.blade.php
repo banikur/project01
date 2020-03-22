@@ -4,8 +4,8 @@
 
         <!-- PLACE YOUR LOGO HERE -->
         <span id="logo">
-            <img src="{{url('assets/logo.png')}}" alt="E-Reporting" style="float: left;width: 45px; margin-top: -11px;">
-            <h1 style="color: white;margin: 0px;"><strong>BIG POP</strong></h1>
+            <img src="{{url('front_login/images/logo_kemenkeu.png')}}" alt="E-Reporting" style="float: left;width: 45px; margin-top: -5px;max-width:20%;">
+            <h1 style="color: white;margin: 0px;"><strong>&nbsp;&nbsp;SIPERDA</strong></h1>
         </span>
 
         <!-- END LOGO PLACEHOLDER -->

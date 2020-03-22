@@ -50,7 +50,9 @@
         max-height: 120px;
         max-width: 120px
     }
-
+    .form-horizontal .control-label {
+        text-align: left !important;
+    }
     .btnround {
         display: block;
         height: 170px;

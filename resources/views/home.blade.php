@@ -1,23 +1,24 @@
-@extends('layouts.app')
-
+@extends('template.backend.main')
+@section('title')
+    SIPERDA
+@endsection
+@section('ribbon')
+        <li>Dashboard</li>
+@endsection
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h1 class="page-title txt-color-blueDark text-center well">
+                <!-- PAGE HEADER -->
+                Selamat Datang di Applikasi Sistem Informasi Peraturan Daerah
+                <br>
+                <small class="text-success"></small>
+            </h1>
         </div>
     </div>
-</div>
 @endsection
+@section('js')
+
+@endsection
+
+
