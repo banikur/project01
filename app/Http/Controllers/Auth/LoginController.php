@@ -37,9 +37,9 @@ class LoginController extends BaseController
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 2])) {
             return redirect()->intended('/admin/dashboard');
         } else if (Auth::guard('kab_kota')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 4])) {
-            return redirect()->intended('/kab_kota/dashboard');
+            return redirect()->intended('/user/pajak-kab-kota/perda');
         } else if (Auth::guard('provinsi')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 3])) {
-            return redirect()->intended('/provinsi/dashboard');
+            return redirect()->intended('/user/pajak-provinsi/perda');
         } else {
             return redirect()->intended('/login');
         }
