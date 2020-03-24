@@ -89,8 +89,12 @@ SIPERDA
                                                     <label class="col-sm-4 control-label">
                                                         A.&nbsp;&nbsp;Jenis Pajak Daerah</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control select" id="subjek" name="subjek">
-
+                                                        <select class="form-control select" id="jenis_pajak"
+                                                            onchange="tarif_pajak()" name="jenis_pajak">
+                                                            @foreach($master_pajak as $item)
+                                                            <option value="{{$item->id_jenis_pajak}}">
+                                                                {{$item->jenis_pajak}}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -98,26 +102,27 @@ SIPERDA
                                                     <label class="col-sm-4 control-label">
                                                         B.&nbsp;&nbsp;Subjek Pajak</label>
                                                     <div class="col-sm-7">
-                                                        <input class="form-control" readonly="" type="text"
-                                                            name="perihal" id="perihal" autocomplete="off">
+                                                        <input class="form-control" type="text" name="subjek"
+                                                            id="subjek" autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">
                                                         C.&nbsp;&nbsp;Objek Pajak</label>
                                                     <div class="col-sm-7">
-                                                        <input class="form-control" type="text" readonly=""
-                                                            name="perihal" id="perihal" autocomplete="off">
+                                                        <input class="form-control" type="text" name="objek"
+                                                            id="objek" autocomplete="off">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-sm-4 control-label">
                                                         D.&nbsp;&nbsp;Pengecualian Objek Pajak</label>
                                                     <div class="col-sm-7">
-                                                        <input class="form-control" type="text" name="perihal"
-                                                            id="perihal" autocomplete="off">
+                                                        <input class="form-control" type="text" name="pengecualian"
+                                                            id="pengecualian" autocomplete="off">
                                                     </div>
                                                 </div>
+                                                <br/><br/>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="">
@@ -125,6 +130,9 @@ SIPERDA
                                                         <label class="col-sm-4 control-label">
                                                             E.&nbsp;&nbsp;Tarif</label>
                                                         <div class="col-sm-7">
+                                                            <div class="detail" id="detail">
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,11 +168,11 @@ SIPERDA
                 <section id="widget-grid" class="">
                     <div class="row">
                         <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            
+
                         </article>
                     </div>
                 </section>
-                
+
             </div>
         </div>
     </div>
@@ -175,5 +183,23 @@ SIPERDA
 $('.select').select2({
     placeholder: 'Select an option'
 });
+
+function tarif_pajak() {
+    var jenis_pajak = $("#jenis_pajak").val();
+    $.ajax({
+        url: "{{route('pajak.detail')}}",
+        data: {
+            jenis_pajak: jenis_pajak
+        },
+
+        success: function(data) {
+            $('#detail').html(data);
+            console.log("load data");
+        },
+        error: function(data) {
+            console.log("gagal load data");
+        }
+    });
+}
 </script>
 @endsection
